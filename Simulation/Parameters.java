@@ -1,4 +1,4 @@
-package Simulation.client;
+package Simulation;
 
 public class Parameters {
     

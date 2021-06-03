@@ -2,7 +2,7 @@ package Simulation.client;
 
 
 import Simulation.interfaces.*;
-
+import Simulation.Parameters;
 
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;

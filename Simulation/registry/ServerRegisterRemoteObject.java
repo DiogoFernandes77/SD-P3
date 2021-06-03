@@ -1,4 +1,4 @@
-package registry;
+package Simulation.registry;
 
 import java.rmi.registry.Registry;
 import java.rmi.registry.LocateRegistry;
@@ -7,7 +7,7 @@ import java.rmi.AccessException;
 import java.rmi.server.UnicastRemoteObject;
 import java.rmi.server.*;
 import genclass.GenericIO;
-import interfaces.Register;
+import Simulation.interfaces.Register;
 
 /**
  *   Instantiation and registering of a remote object that enables the registration of other remote objects

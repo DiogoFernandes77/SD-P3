@@ -12,12 +12,15 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
+
+import Simulation.interfaces.interfacePlane;
+
 import java.util.Random;
 
 /**
  * Plane class - implement methods
  */
-public class Plane  {
+public class Plane implements interfacePlane {
     // static variable single_instance of type Singleton
     private static Plane plane_instance = null;
     private ArrayList<Integer> plane;

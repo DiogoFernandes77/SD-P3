@@ -14,10 +14,12 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
+import Simulation.interfaces.interfaceDestAirp;
+
 /**
  * Destination Airport
  */
-public class DestAirport {
+public class DestAirport implements interfaceDestAirp {
     private final Lock lock;
     private static DestAirport destArp_instance = null;
     private static ArrayList<Integer> passenger_arrived;

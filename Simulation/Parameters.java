@@ -10,9 +10,9 @@ public class Parameters {
     
 
 
-    public final static String PLANE_AIRPORT_HOSTNAME = "l040101-ws02.ua.pt";
+    public final static String PLANE_HOSTNAME = "l040101-ws02.ua.pt";
 
-    public final static int PLANE_AIRPORT_PORT = 22351;
+    public final static int PLANE_PORT = 22351;
     
     public final static String PLANE_NAME_ENTRY = "PlaneHandler";
     

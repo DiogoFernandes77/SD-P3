@@ -1,24 +1,21 @@
 package Simulation.client;
-
-
-import Simulation.interfaces.*;
 import Simulation.Parameters;
-
+import Simulation.interfaces.*;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
-
 /**
- * HostessClient is the class that instantiates the hostess thread
+ * PassengerClient is the class that instantiates a passenger thread
  */
-public class HostessClient{
+public class PassengerClient{
+    
     public static void main(String[] args)
     {
-        
         interfaceDepAirp dep_int = null;
         interfacePlane plane_int = null;
-        
+        interfaceDestAirp dest_int = null;
+
         /* get location of the generic registry service */
         String rmiRegHostName = Parameters.REGISTRY_HOSTNAME;
         int rmiRegPortNumb = Parameters.REGISTRY_PORT;
@@ -27,7 +24,6 @@ public class HostessClient{
         /* look for the remote object by name in the remote host registry */
         
         Registry registry = null;
-        
         try
         {
             registry = LocateRegistry.getRegistry (rmiRegHostName, rmiRegPortNumb);
@@ -36,10 +32,7 @@ public class HostessClient{
         { System.out.printf("RMI registry creation exception: " + e.getMessage ());
           e.printStackTrace ();
           System.exit (1);
-        }
-        
-        
-        
+        }      
         /* Look for the other entities in the registry */
         
         //depart airport
@@ -72,20 +65,33 @@ public class HostessClient{
             System.exit (1);
         }
         
-        
-        
-        
-        Hostess hos = new Hostess(dep_int, plane_int);
-        System.out.println("Starting Hostess Thread");
-        hos.start();
+        //destination airport
         try
         {
-            hos.join();
+            dest_int = (interfaceDestAirp) registry.lookup (Parameters.DESTINATION_AIRPORT_NAME_ENTRY);
+        }
+        catch (NotBoundException ex) {
+            System.out.println("Racing Track is not registered: " + ex.getMessage () );
+            ex.printStackTrace ();
+            System.exit(1);
+        } catch (RemoteException ex) {
+            System.out.println("Exception thrown while locating Racing Track: " + ex.getMessage () );
+            ex.printStackTrace ();
+            System.exit (1);
+        }
+        
+        
+        Passenger passenger = new Passenger(Integer.parseInt(args[0]),dep_int,plane_int,dest_int);
+        System.out.println("Starting Passenger " + args[0] + " Thread");
+        passenger.start();
+        try
+        {
+            passenger.join();
         }
         catch (InterruptedException ex)
         {
             System.out.println("Interrupter Exception Error - " + ex.toString());
         }
-        System.out.println("Hostess Thread Ended");
+        System.out.println("Passenger Thread Ended");
     }
 }

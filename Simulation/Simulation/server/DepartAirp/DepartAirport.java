@@ -7,6 +7,7 @@ package Simulation.server.DepartAirp;
 
 //import Simulation.stub.Logger_stub;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.concurrent.locks.Condition;
@@ -21,8 +22,9 @@ import Simulation.interfaces.*;
  */
 public class DepartAirport implements interfaceDepAirp{
     private static DepartAirport depArp_instance = null;
+    private interfaceLog i_log = null;
 
-    private static int nPassenger, boardMin, boardMax;
+    private int nPassenger, boardMin, boardMax;
     private int current_capacity = 0;
     private int passenger_left;
 
@@ -42,7 +44,7 @@ public class DepartAirport implements interfaceDepAirp{
      * @param boardMin
      * @param boardMax
      */
-    public DepartAirport(int nPassenger, int boardMin, int boardMax){
+    public DepartAirport(int nPassenger, int boardMin, int boardMax, interfaceLog i_log){
         lock = new ReentrantLock();
         queue = new LinkedList<>();
         waitingPlane = lock.newCondition();
@@ -50,6 +52,8 @@ public class DepartAirport implements interfaceDepAirp{
         waitingCheck = lock.newCondition();
         waitingShow = lock.newCondition();
         waitingFly = lock.newCondition();
+
+        this.i_log = i_log;
 
         this.nPassenger = nPassenger;
         this.boardMin = boardMin;
@@ -149,6 +153,9 @@ public class DepartAirport implements interfaceDepAirp{
             }
             queue.remove();
             //Logger_stub.getInstance().pass_enter_queue(queue);
+            synchronized (interfaceLog.class) {
+                i_log.setQ(queue);
+            }
             showing = false;
             rdyCheck = false;
             waitingPassenger.signal();
@@ -192,6 +199,9 @@ public class DepartAirport implements interfaceDepAirp{
             boardingComplete = true;
             waitingFly.signal();
             //Logger_stub.getInstance().departed(current_capacity);
+            synchronized (interfaceLog.class) {
+                i_log.departed(current_capacity);
+            }
         }catch(Exception e){
             System.out.println("Interrupter Exception Error - " + e);
             e.printStackTrace();
@@ -229,8 +239,9 @@ public class DepartAirport implements interfaceDepAirp{
         try{
             System.out.printf("passenger %d enters queue \n", person);
             queue.add(person);
-            //Logger_stub.getInstance().pass_enter_queue(queue);
-
+            synchronized (interfaceLog.class) {
+                i_log.setQ(queue);
+            }
         }catch(Exception e){
             System.out.println("Interrupter Exception Error - " + e);
             e.printStackTrace();
@@ -272,6 +283,9 @@ public class DepartAirport implements interfaceDepAirp{
             System.out.printf("passenger %d  show documents \n", person);
             //block state 2
             //Logger_stub.getInstance().pass_check(": passenger " + person+ " checked.\n");
+            synchronized (interfaceLog.class) {
+                i_log.pass_check(": passenger " + person + " checked.\n");
+            }
             while(!block_state2){
                 waitingPassenger.await(); 
             }

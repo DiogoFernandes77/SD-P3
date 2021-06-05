@@ -1,20 +1,18 @@
 /**
- *  Log Class to produce log file each initiation
+ *  Plane Class
  *  @author António Ramos e Diogo Fernandes
  */
 
 package Simulation.server.Plane;
 
 import java.rmi.RemoteException;
-
-//import Simulation.stub.Logger_stub;
-
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
+import Simulation.interfaces.interfaceLog;
 import Simulation.interfaces.interfacePlane;
 
 import java.util.Random;
@@ -25,6 +23,7 @@ import java.util.Random;
 public class Plane implements interfacePlane {
     // static variable single_instance of type Singleton
     private static Plane plane_instance = null;
+    private interfaceLog i_log = null;
     private ArrayList<Integer> plane;
     private Condition flying;
     private Condition hostess;
@@ -39,12 +38,13 @@ public class Plane implements interfacePlane {
     /**
      * Constructor Plane
      */
-    public Plane(){
+    public Plane(interfaceLog i_log){
         plane = new ArrayList<Integer>();
         lock = new ReentrantLock();
         flying = lock.newCondition();
         hostess = lock.newCondition();
         cd_deboarding = lock.newCondition();
+        this.i_log = i_log;
     }
 
 
@@ -152,7 +152,9 @@ public class Plane implements interfacePlane {
             enter = true;
             hostess.signal();
             System.out.printf("passenger %d boarding plane \n", person);
-            //Logger_stub.getInstance().pass_in_flight(plane);
+            synchronized (interfaceLog.class) {
+                i_log.setIN_F(plane);
+            }
          }catch(Exception e){
             System.out.println("Interrupter Exception Error - " + e);
             e.printStackTrace();
@@ -178,7 +180,7 @@ public class Plane implements interfacePlane {
     }
     /**
      * Passenger person_id is leaving plane
-     * @param person_id
+     * @param person
      */
     public void leaveThePlane(int person)throws RemoteException{
         lock.lock();
@@ -187,6 +189,9 @@ public class Plane implements interfacePlane {
             cd_deboarding.signal();
             System.out.printf("Passenger %d leaving the plane \n", person);
             //Logger_stub.getInstance().pass_in_flight(plane);
+            synchronized (interfaceLog.class) {
+                i_log.setIN_F(plane);
+            }
         }catch(Exception e){
             System.out.println("Interrupter Exception Error - " + e);
             e.printStackTrace();

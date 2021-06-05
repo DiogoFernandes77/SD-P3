@@ -5,30 +5,27 @@ import java.rmi.*;
 public interface interfaceDepAirp extends Remote{
 
     //pilot
-    public void informPlaneReadyForBoarding()throws RemoteException ;
-    public void waitForAllInBoarding()throws RemoteException ;
-    public void parkAtTransferGate()throws RemoteException ;
+    void informPlaneReadyForBoarding()throws RemoteException ;
+    void waitForAllInBoarding()throws RemoteException ;
+    void parkAtTransferGate()throws RemoteException ;
     
     //hostess
-    public void prepareForPassBoarding()throws RemoteException ;
-    public void checkDocuments()throws RemoteException;
-    public void waitForNextPassenger()throws RemoteException;
-    public void informPlaneReadyToTakeOff()throws RemoteException;
-    public void waitForNextFlight()throws RemoteException;
+    void prepareForPassBoarding()throws RemoteException ;
+    void checkDocuments()throws RemoteException;
+    void waitForNextPassenger()throws RemoteException;
+    void informPlaneReadyToTakeOff()throws RemoteException;
+    void waitForNextFlight()throws RemoteException;
 
     //pilot
-    public void enterQueue(int person)throws RemoteException;
-    public void waitInQueue(int person)throws RemoteException;
-    public void showDocuments(int person)throws RemoteException;
+    void enterQueue(int person)throws RemoteException;
+    void waitInQueue(int person)throws RemoteException;
+    void showDocuments(int person)throws RemoteException;
 
     //get/set
-    public int getPassenger_left()throws RemoteException;
-    public int getBoardingMin()throws RemoteException;
-    public int getBoardingMax()throws RemoteException ;
-    public int getCurrent_capacity()throws RemoteException ;
-    public boolean getIsQueueEmpty()throws RemoteException ;
-    public boolean stillPassenger()throws RemoteException ;
-
-
-
+    int getPassenger_left()throws RemoteException;
+    int getBoardingMin()throws RemoteException;
+    int getBoardingMax()throws RemoteException ;
+    int getCurrent_capacity()throws RemoteException ;
+    boolean getIsQueueEmpty()throws RemoteException ;
+    boolean stillPassenger()throws RemoteException ;
 }

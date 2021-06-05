@@ -3,9 +3,7 @@ package Simulation.registry;
 import java.rmi.registry.Registry;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.RemoteException;
-import java.rmi.AccessException;
 import java.rmi.server.UnicastRemoteObject;
-import java.rmi.server.*;
 
 import Simulation.interfaces.Register;
 import Simulation.Parameters;

@@ -6,12 +6,14 @@ cp registry/*.java Simulation/registry/
 cp server/DepartAirp/*.java Simulation/server/DepartAirp/
 cp server/Plane/*.java Simulation/server/Plane/
 cp server/DestinationAirp/*.java Simulation/server/DestinationAirp/
+cp server/LogPackage/*.java Simulation/server/LogPackage/
 cp client/*.java Simulation/client/
 cp States/*.java Simulation/States/
 cp Parameters.java Simulation
 cp java.policy Simulation/server/DepartAirp/
 cp java.policy Simulation/server/Plane/
 cp java.policy Simulation/server/DestinationAirp/
+cp java.policy Simulation/server/LogPackage/
 echo "Compressing execution environments."
 rm -f Simulation.zip
 zip -rq Simulation.zip Simulation

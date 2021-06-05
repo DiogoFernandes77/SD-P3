@@ -1,10 +1,9 @@
 /**
- * Log Class to produce log file each initiation
+ * Hostess Class
  *
  * @author António Ramos e Diogo Fernandes
  */
 package Simulation.client;
-
 
 import java.rmi.RemoteException;
 
@@ -12,7 +11,7 @@ import Simulation.States.Hostess_State;
 import Simulation.interfaces.*;
 
 /**
- * Client Hospedeira de bordo
+ * Client Hostess
  *
  */
 public class Hostess extends Thread {
@@ -22,17 +21,25 @@ public class Hostess extends Thread {
 
     private interfaceDepAirp dep_int = null;
     private interfacePlane plane_int = null;
+    private interfaceLog log_int = null;
     /**
      * Constructor da Hospedeira
      * <br>
      * Set estado e obtem a instancia do logger stub para fazer alteração do estado
      * */
-    public Hostess(interfaceDepAirp dep_int, interfacePlane plane_int) {
+    public Hostess(interfaceDepAirp dep_int, interfacePlane plane_int, interfaceLog log_int) {
         hostess_state = Hostess_State.WAIT_FOR_NEXT_FLIGHT;
         this.dep_int = dep_int;
         this.plane_int = plane_int;
-        
+        this.log_int = log_int;
         //Logger_stub.getInstance().hostess_state(hostess_state);
+        synchronized (interfaceLog.class){
+            try {
+                log_int.setST_Hostess(hostess_state);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     /**
@@ -62,13 +69,10 @@ public class Hostess extends Thread {
                 System.out.print(" BOARDING COMPLETE \n");
                 informPlaneReadyToTakeOff();
             } while (stillPassenger());
-            //Logger_stub.getInstance().shutdown();
             System.out.println("HOSTESS RUNS ENDED \n");
-
         }catch(RemoteException e){
             System.out.print(e);
         }
-        
     }
 
     /**
@@ -79,6 +83,10 @@ public class Hostess extends Thread {
     private void waitForNextFlight() throws RemoteException{
         hostess_state = Hostess_State.WAIT_FOR_NEXT_FLIGHT;
         //Logger_stub.getInstance().hostess_state_log(hostess_state, "Hostess is waiting for next flight");
+        synchronized (interfaceLog.class) {
+            log_int.setST_Hostess(hostess_state);
+            log_int.log_write("Hostess is waiting for next flight");
+        }
         dep_int.waitForNextFlight();
     }
 
@@ -90,6 +98,10 @@ public class Hostess extends Thread {
     private void prepareForPassBoarding() throws RemoteException{
         hostess_state = Hostess_State.WAIT_FOR_PASSENGER;
         //Logger_stub.getInstance().hostess_state_log(hostess_state, "Hostess is waiting for passenger");
+        synchronized (interfaceLog.class) {
+            log_int.setST_Hostess(hostess_state);
+            log_int.log_write("Hostess is waiting for passenger");
+        }
         dep_int.prepareForPassBoarding();
     }
 
@@ -101,6 +113,10 @@ public class Hostess extends Thread {
     private void waitForNextPassenger()throws RemoteException {
         hostess_state = Hostess_State.WAIT_FOR_PASSENGER;
         //Logger_stub.getInstance().hostess_state_log(hostess_state, "Hostess is waiting for passenger");
+        synchronized (interfaceLog.class) {
+            log_int.setST_Hostess(hostess_state);
+            log_int.log_write("Hostess is waiting for next passenger");
+        }
         dep_int.waitForNextPassenger();
     }
 
@@ -112,6 +128,10 @@ public class Hostess extends Thread {
     private void checkDocuments() throws RemoteException{
         hostess_state = Hostess_State.CHECK_PASSENGER;
         //Logger_stub.getInstance().hostess_state_log(hostess_state, "Hostess is checking documents of passengers");
+        synchronized (interfaceLog.class) {
+            log_int.setST_Hostess(hostess_state);
+            log_int.log_write("Hostess is checking documents of passengers");
+        }
         dep_int.checkDocuments();
     }
 
@@ -128,6 +148,10 @@ public class Hostess extends Thread {
     private void informPlaneReadyToTakeOff() throws RemoteException{
         hostess_state = Hostess_State.READY_TO_FLY;
         //Logger_stub.getInstance().hostess_state_log(hostess_state, "Hostess tell pilot that he can fly");
+        synchronized (interfaceLog.class) {
+            log_int.setST_Hostess(hostess_state);
+            log_int.log_write("Hostess tell pilot that he can fly");
+        }
         dep_int.informPlaneReadyToTakeOff();
     }
 

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="671aa700-f05d-4a2e-abdf-c866efb35758" name="Default Changelist" comment="add logger, run as localhost">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SD-P3.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Simulation/Simulation/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Simulation/Simulation/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Simulation/Simulation/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Simulation/Simulation/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Simulation/Simulation/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Simulation/Simulation/Simulation.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Simulation/Simulation/interfaces/interfaceLog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Simulation/Simulation/server/LogPackage/Logger_.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Simulation/Simulation/server/LogPackage/Logger_Class.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Simulation/Simulation/server/LogPackage/Logger_Server.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Simulation/Simulation/server/LogPackage/java.policy" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Simulation/Simulation/server/LogPackage/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Simulation/server/DepartAirp/java.policy" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Simulation/server/DestinationAirp/java.policy" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Simulation/server/LogPackage/java.policy" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Simulation/server/Plane/java.policy" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Simulation/server/LogPackage/Logger_Class.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Simulation/server/LogPackage/Logger_Server.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Simulation/Simulation/server/LogPackage/Logger_Class.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Simulation/buildAndDeploy.sh" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Simulation/clean.sh" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Simulation/killProcess.sh" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Simulation/States/Hostess_State.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Simulation/interfaces/interfaceDepAirp.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Simulation/interfaces/Register.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Simulation/client/Pilot.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Simulation/Simulation/server/LogPackage/Logger_.txt" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Simulation/client/Hostess.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Simulation/client/HostessClient.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Simulation/interfaces/interfacePlane.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Simulation/interfaces/interfaceDestAirp.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Simulation/client/Passenger.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Simulation/client/PilotClient.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Simulation/server/Plane/Plane_server.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Simulation/server/DepartAirp/DepartAirport.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Simulation/server/Plane/Plane.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Simulation/server/DepartAirp/DepAirp_server.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Simulation/server/DestinationAirp/DestAirport.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Simulation/server/DestinationAirp/DestAirp_server.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Simulation/interfaces/interfaceLog.java" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="IlluminatedCloudWorkspaceSettings">
+    <option name="projectWorkspaceSettings">
+      <ProjectWorkspaceSettings>
+        <option name="soqlQuerySettings">
+          <SoqlQuerySettings>
+            <option name="savedDocuments">
+              <list>
+                <SoqlQuerySavedDocument>
+                  <option name="name" value="SOQL Query 1" />
+                </SoqlQuerySavedDocument>
+              </list>
+            </option>
+            <option name="selectedSavedDocumentIndex" value="0" />
+          </SoqlQuerySettings>
+        </option>
+      </ProjectWorkspaceSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1tWf1XvS0AN6lNXMCHXqq6RYMMj" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$USER_HOME$/IdeaProjects/SD-P1" />
+    <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Logger_Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Simulation.server.LogPackage.Logger_Server" />
+      <module name="SD-P3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Simulation.server.LogPackage.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Logger_Server" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="671aa700-f05d-4a2e-abdf-c866efb35758" name="Default Changelist" comment="" />
+      <created>1622889551628</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1622889551628</updated>
+    </task>
+    <task id="LOCAL-00001" summary="add logger, run as localhost">
+      <created>1622929634855</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1622929634855</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="add logger, run as localhost" />
+    <option name="LAST_COMMIT_MESSAGE" value="add logger, run as localhost" />
+  </component>
+</project>

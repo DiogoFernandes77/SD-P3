@@ -6,7 +6,7 @@ cp server/Plane/*.java Simulation/server/Plane/
 cp server/DestinationAirp/*.java Simulation/server/DestinationAirp/
 cp client/*.java Simulation/client/
 cp States/*.java Simulation/States/
-cp Parameters.java Simulation
+cp Parameters_Local.txt Simulation/Parameters.java
 cp java.policy Simulation/server/DepartAirp/
 cp java.policy Simulation/server/Plane/
 cp java.policy Simulation/server/DestinationAirp/

@@ -26,7 +26,6 @@ public class Passenger extends Thread{
     private interfaceDepAirp dep_int;
     private interfacePlane plane_int;
     private interfaceDestAirp dest_int;
-    private interfaceLog log_int = null;
     private Passenger_State passenger_state;
 
     /**
@@ -34,21 +33,13 @@ public class Passenger extends Thread{
      * Manda uma mensagem pelo o //Logger_stub que o estado mudou de um certo id
      * @param id
      */
-    public Passenger(int id, interfaceDepAirp dep_int, interfacePlane plane_int, interfaceDestAirp dest_int, interfaceLog log_int){
+    public Passenger(int id, interfaceDepAirp dep_int, interfacePlane plane_int, interfaceDestAirp dest_int){
         passenger_state = Passenger_State.GOING_TO_AIRPORT;
         id_passenger = id;
         
         this.dep_int = dep_int;
         this.plane_int = plane_int;
         this.dest_int = dest_int;
-        this.log_int = log_int;
-        try {
-            synchronized (interfaceLog.class) {
-                this.log_int.setST_Passenger(id_passenger, passenger_state);
-            }
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        }
     }
 
     /**
@@ -66,7 +57,6 @@ public class Passenger extends Thread{
             waitForEndOfFlight();
             leaveThePlane();
             death();
-            //Logger_stub.shutdown();
         }catch(RemoteException e){
             System.out.print(e);
         }
@@ -80,7 +70,7 @@ public class Passenger extends Thread{
         Random gen = new Random();
         int time = gen.nextInt(10);
         try{
-            Thread.sleep(time * 100); 
+            Thread.sleep(time * 100);
         }catch(Exception e){
             System.out.print("Error traveling to airport");
         }
@@ -93,10 +83,6 @@ public class Passenger extends Thread{
      */
     private void enterQueue()throws RemoteException{
         passenger_state = Passenger_State.IN_QUEUE;
-        synchronized (interfaceLog.class) {
-            log_int.setST_Passenger(id_passenger, passenger_state);
-            log_int.log_write("Passenger " + id_passenger + " is entering in queue");
-        }
         dep_int.enterQueue(id_passenger);
     }
 
@@ -107,10 +93,6 @@ public class Passenger extends Thread{
      */
     private void waitInQueue() throws RemoteException{
         passenger_state = Passenger_State.IN_QUEUE;
-        synchronized (interfaceLog.class) {
-            log_int.setST_Passenger(id_passenger, passenger_state);
-            log_int.log_write("Passenger " + id_passenger + " is in queue");
-        }
         dep_int.waitInQueue(id_passenger);
     }
 
@@ -133,11 +115,7 @@ public class Passenger extends Thread{
      */
     private void waitForEndOfFlight()throws RemoteException{
         passenger_state = Passenger_State.IN_FLIGHT;
-        synchronized (interfaceLog.class) {
-            log_int.setST_Passenger(id_passenger, passenger_state);
-            log_int.log_write("Passenger " + id_passenger + " is in flight");
-        }
-        plane_int.waitForEndOfFlight();
+        plane_int.waitForEndOfFlight(id_passenger);
     }
     /**
      * Passageiro sai do aviao
@@ -153,10 +131,6 @@ public class Passenger extends Thread{
      */
     private void death()throws RemoteException{
         passenger_state = Passenger_State.AT_DESTINATION;
-        synchronized (interfaceLog.class) {
-            log_int.setST_Passenger(id_passenger, passenger_state);
-            log_int.log_write("Passenger " + id_passenger + " is at destination");
-        }
         dest_int.Passenger_death(id_passenger);
     }
 

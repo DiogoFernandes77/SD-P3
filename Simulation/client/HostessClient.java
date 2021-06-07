@@ -13,14 +13,12 @@ import java.rmi.registry.Registry;
  */
 public class HostessClient {
     public static void main(String[] args) {
-        interfaceLog log_int = null;
         interfaceDepAirp dep_int = null;
         interfacePlane plane_int = null;
 
         /* get location of the generic registry service */
         String rmiRegHostName = Parameters.REGISTRY_HOSTNAME;
         int rmiRegPortNumb = Parameters.REGISTRY_PORT;
-
 
         /* look for the remote object by name in the remote host registry */
         Registry registry = null;
@@ -34,19 +32,6 @@ public class HostessClient {
         }
 
         /* Look for the other entities in the registry */
-
-        //logger
-        try{
-            log_int = (interfaceLog) registry.lookup(Parameters.LOGGER_NAME_ENTRY);
-        }catch (NotBoundException ex) {
-            System.out.println("Racing Track is not registered: " + ex.getMessage());
-            ex.printStackTrace();
-            System.exit(1);
-        } catch (RemoteException ex) {
-            System.out.println("Exception thrown while locating Racing Track: " + ex.getMessage());
-            ex.printStackTrace();
-            System.exit(1);
-        }
 
         //depart airport
         try {
@@ -74,7 +59,7 @@ public class HostessClient {
             System.exit(1);
         }
 
-        Hostess hos = new Hostess(dep_int, plane_int, log_int);
+        Hostess hos = new Hostess(dep_int, plane_int);
         System.out.println("Starting Hostess Thread");
         hos.start();
         try {

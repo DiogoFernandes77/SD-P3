@@ -5,24 +5,29 @@
 
 package Simulation.server.DepartAirp;
 
-//import Simulation.stub.Logger_stub;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 import java.rmi.*;
-import java.rmi.server.*;
+
 import Simulation.interfaces.*;
+import Simulation.States.*;
 
 /**
  * DepartAirport
  */
 public class DepartAirport implements interfaceDepAirp{
     private static DepartAirport depArp_instance = null;
-    private interfaceLog i_log = null;
+
+    private Hostess_State hostess_state;
+    private Pilot_State pilot_state;
+    private Passenger_State passenger_state;
+
+
+    private interfaceLog log_int = null;
 
     private int nPassenger, boardMin, boardMax;
     private int current_capacity = 0;
@@ -44,7 +49,7 @@ public class DepartAirport implements interfaceDepAirp{
      * @param boardMin
      * @param boardMax
      */
-    public DepartAirport(int nPassenger, int boardMin, int boardMax, interfaceLog i_log){
+    public DepartAirport(int nPassenger, int boardMin, int boardMax, interfaceLog log_int){
         lock = new ReentrantLock();
         queue = new LinkedList<>();
         waitingPlane = lock.newCondition();
@@ -53,12 +58,19 @@ public class DepartAirport implements interfaceDepAirp{
         waitingShow = lock.newCondition();
         waitingFly = lock.newCondition();
 
-        this.i_log = i_log;
+        this.log_int = log_int;
 
         this.nPassenger = nPassenger;
         this.boardMin = boardMin;
         this.boardMax = boardMax;
         passenger_left = nPassenger;
+        synchronized (interfaceLog.class){
+            try {
+                log_int.setQ(queue);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     //---------------------------------------------------/Pilot methods/-----------------------------------------------------//
@@ -66,13 +78,18 @@ public class DepartAirport implements interfaceDepAirp{
     /**
      * Pilot inform Hostess that plane is ready to board
      */
-    public void informPlaneReadyForBoarding()throws RemoteException{
+    public void informPlaneReadyForBoarding(int id_to_set)throws RemoteException{
         lock.lock();
         try{
             current_capacity = 0;
             plane_rdy = true; 
             waitingPlane.signal();
-
+            pilot_state = Pilot_State.READY_FOR_BOARDING;
+            synchronized (interfaceLog.class) {
+                log_int.setFN(id_to_set);
+                log_int.setST_Pilot(pilot_state);
+                log_int.board_start("\nFlight " + id_to_set + ": boarding started.\n");
+            }
             System.out.print("Plane is Ready \n");
         }catch(Exception e){
             System.out.println("Interrupter Exception Error - " + e);
@@ -91,6 +108,11 @@ public class DepartAirport implements interfaceDepAirp{
             while(!boardingComplete){
                 waitingFly.await();   
            }
+            pilot_state = Pilot_State.WAIT_FOR_BOARDING;
+            synchronized (interfaceLog.class) {
+                log_int.setST_Pilot(pilot_state);
+                log_int.log_write("Pilot is waiting for boarding");
+            }
            boardingComplete = false;
         }catch(Exception e){
             System.out.println("Interrupter Exception Error - " + e);
@@ -107,6 +129,11 @@ public class DepartAirport implements interfaceDepAirp{
         lock.lock();
         try{
             System.out.println("PILOT: parking plane \n");
+            pilot_state = Pilot_State.AT_TRANSFER_GATE;
+            synchronized (interfaceLog.class) {
+                log_int.setST_Pilot(pilot_state);
+                log_int.log_write("Pilot is at transfer gate");
+            }
             System.out.printf("PILOT: passenger left = %d \n", passenger_left);
         }catch(Exception e){
             System.out.println("Interrupter Exception Error - " + e);
@@ -115,7 +142,17 @@ public class DepartAirport implements interfaceDepAirp{
             lock.unlock();
          }
     }
-   
+
+    /**
+     *  Pilot inform to write summary on file
+     */
+
+    public void summary() throws RemoteException{
+        synchronized(interfaceLog.class){
+            log_int.summary();
+        }
+    }
+
     //---------------------------------------------------/Hostess methods/-----------------------------------------------------//
 
     /**
@@ -127,6 +164,11 @@ public class DepartAirport implements interfaceDepAirp{
             System.out.print("Prepare for Boarding! \n");
             while(queue.isEmpty()){
                 waitingPassenger.await();
+            }
+            hostess_state = Hostess_State.WAIT_FOR_PASSENGER;
+            synchronized (interfaceLog.class) {
+                log_int.setST_Hostess(hostess_state);
+                log_int.log_write("Hostess is waiting for passenger");
             }
         }catch(Exception e){
             System.out.println("Interrupter Exception Error - " + e);
@@ -152,10 +194,13 @@ public class DepartAirport implements interfaceDepAirp{
                 waitingShow.await();  
             }
             queue.remove();
-            //Logger_stub.getInstance().pass_enter_queue(queue);
+            hostess_state = Hostess_State.CHECK_PASSENGER;
             synchronized (interfaceLog.class) {
-                i_log.setQ(queue);
+                log_int.setST_Hostess(hostess_state);
+                log_int.log_write("Hostess is checking documents of passengers");
+                log_int.setQ(queue);
             }
+
             showing = false;
             rdyCheck = false;
             waitingPassenger.signal();
@@ -182,6 +227,11 @@ public class DepartAirport implements interfaceDepAirp{
             while(queue.isEmpty()){
                 waitingPassenger.await(); 
             }
+            hostess_state = Hostess_State.WAIT_FOR_PASSENGER;
+            synchronized (interfaceLog.class) {
+                log_int.setST_Hostess(hostess_state);
+                log_int.log_write("Hostess is waiting for next passenger");
+            }
         }catch(Exception e){
             System.out.println("Interrupter Exception Error - " + e);
             e.printStackTrace();
@@ -193,14 +243,16 @@ public class DepartAirport implements interfaceDepAirp{
     /**
      * Hostess signals pilot that he can fly
      */
-    public void informPlaneReadyToTakeOff()throws RemoteException{
+    public void informPlaneReadyToTakeOff() throws RemoteException{
         lock.lock();
         try{
             boardingComplete = true;
             waitingFly.signal();
-            //Logger_stub.getInstance().departed(current_capacity);
+            hostess_state = Hostess_State.READY_TO_FLY;
             synchronized (interfaceLog.class) {
-                i_log.departed(current_capacity);
+                log_int.setST_Hostess(hostess_state);
+                log_int.log_write("Hostess tell pilot that he can fly");
+                log_int.departed(current_capacity);
             }
         }catch(Exception e){
             System.out.println("Interrupter Exception Error - " + e);
@@ -220,6 +272,12 @@ public class DepartAirport implements interfaceDepAirp{
                 waitingPlane.await();
             }
             plane_rdy = false;
+            hostess_state = Hostess_State.WAIT_FOR_NEXT_FLIGHT;
+            synchronized (interfaceLog.class) {
+                log_int.setST_Hostess(hostess_state);
+                log_int.setQ(queue);
+                log_int.log_write("Hostess is waiting for next flight");
+            }
         }catch(Exception e){
             System.out.println("Interrupter Exception Error - " + e);
             e.printStackTrace();
@@ -239,8 +297,12 @@ public class DepartAirport implements interfaceDepAirp{
         try{
             System.out.printf("passenger %d enters queue \n", person);
             queue.add(person);
+          //coment and try
+            passenger_state = Passenger_State.IN_QUEUE;
             synchronized (interfaceLog.class) {
-                i_log.setQ(queue);
+                log_int.setST_Passenger(person, passenger_state);
+                log_int.setQ(queue);
+                log_int.log_write("Passenger " + person + " is entering in queue");
             }
         }catch(Exception e){
             System.out.println("Interrupter Exception Error - " + e);
@@ -259,10 +321,16 @@ public class DepartAirport implements interfaceDepAirp{
         try{
             waitingPassenger.signal();
             System.out.printf("passenger %d wait for check \n", person);
-
+            passenger_state = Passenger_State.IN_QUEUE;
+            synchronized (interfaceLog.class) {
+                log_int.setST_Passenger(person, passenger_state);
+                log_int.setQ(queue);
+                log_int.log_write("Passenger " + person + " is wait in queue");
+            }
             while(!(rdyCheck && (queue.peek() == person))){// each thread see if hostess is ready and if is their turn
                 waitingCheck.await();
             }
+
         }catch(Exception e){
             System.out.println("Interrupter Exception Error - " + e);
             e.printStackTrace();
@@ -282,9 +350,8 @@ public class DepartAirport implements interfaceDepAirp{
             waitingShow.signal();
             System.out.printf("passenger %d  show documents \n", person);
             //block state 2
-            //Logger_stub.getInstance().pass_check(": passenger " + person+ " checked.\n");
             synchronized (interfaceLog.class) {
-                i_log.pass_check(": passenger " + person + " checked.\n");
+                log_int.pass_check(": passenger " + person + " checked.\n");
             }
             while(!block_state2){
                 waitingPassenger.await(); 

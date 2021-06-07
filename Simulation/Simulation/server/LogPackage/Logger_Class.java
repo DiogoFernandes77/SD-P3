@@ -124,8 +124,10 @@ public class Logger_Class implements interfaceLog{
      * x is the number of the flight
      */
     public void board_start(String text) throws RemoteException{
-
+        lock.lock();
+        try {
             try {
+                System.out.println(text);
                 fileWriter = new FileWriter(file_name, true);
                 fileWriter.write(text);
                 fileWriter.flush();
@@ -133,7 +135,13 @@ public class Logger_Class implements interfaceLog{
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        
+        }catch(Exception e){
+            System.out.println("Interrupter Exception Error - " + e);
+            e.printStackTrace();
+        }finally{
+            lock.unlock();
+        }
+
 
     }
 
@@ -190,7 +198,8 @@ public class Logger_Class implements interfaceLog{
       * Summary of flights
      */
     public void summary() throws RemoteException{
-
+        lock.lock();
+        try{
             try {
                 fileWriter = new FileWriter(file_name, true);
                 fileWriter.write("\nAirlift sum up:\n");
@@ -201,7 +210,12 @@ public class Logger_Class implements interfaceLog{
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
+        }catch(Exception e){
+            System.out.println("Interrupter Exception Error - " + e);
+            e.printStackTrace();
+        }finally{
+            lock.unlock();
+        }
     }
 
     /**
@@ -218,7 +232,6 @@ public class Logger_Class implements interfaceLog{
                 StringBuilder struct_string = new StringBuilder();
                 struct_string.append(Pilot_state[ST_Pilot.ordinal()]).append(" ");
                 struct_string.append(Hostess_state[ST_Hostess.ordinal()]).append(" ");
-                System.out.println(struct_string.toString());
                 for (int i = 0; i < nPassenger; i ++){
                     try{
                         struct_string.append(Passenger_state[ST_Passenger[i].ordinal()]).append(" ");

@@ -12,6 +12,9 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
+import Simulation.States.Hostess_State;
+import Simulation.States.Passenger_State;
+import Simulation.States.Pilot_State;
 import Simulation.interfaces.interfaceLog;
 import Simulation.interfaces.interfacePlane;
 
@@ -23,7 +26,12 @@ import java.util.Random;
 public class Plane implements interfacePlane {
     // static variable single_instance of type Singleton
     private static Plane plane_instance = null;
-    private interfaceLog i_log = null;
+    private Hostess_State hostess_state;
+    private Pilot_State pilot_state;
+    private Passenger_State passenger_state;
+
+
+    private interfaceLog log_int = null;
     private ArrayList<Integer> plane;
     private Condition flying;
     private Condition hostess;
@@ -44,7 +52,7 @@ public class Plane implements interfacePlane {
         flying = lock.newCondition();
         hostess = lock.newCondition();
         cd_deboarding = lock.newCondition();
-        this.i_log = i_log;
+        this.log_int = i_log;
     }
 
 
@@ -58,6 +66,11 @@ public class Plane implements interfacePlane {
         int delay = gen.nextInt(10);
         try{
             flying.await(delay, TimeUnit.MILLISECONDS);
+            pilot_state = Pilot_State.FLYING_FORWARD;
+            synchronized (interfaceLog.class){
+                log_int.setST_Pilot(pilot_state);
+                log_int.log_write("Pilot is flying forward");
+            }
         }catch(Exception e){
              System.out.println("Interrupter Exception Error - " + e);
             e.printStackTrace();
@@ -85,13 +98,18 @@ public class Plane implements interfacePlane {
     /**
      * Pilot announce arrival
      */
-    public void announceArrival()throws RemoteException{
+    public void announceArrival(int id_to_set)throws RemoteException{
         lock.lock();
         try{
             plane_flying = false;
             flying.signalAll();
             while(!plane.isEmpty()){
                 cd_deboarding.await();
+            }
+            pilot_state = Pilot_State.DEBOARDING;
+            synchronized (interfaceLog.class) {
+                log_int.setST_Pilot(pilot_state);
+                log_int.board_start("\nFlight " + id_to_set + ": arrived.\n");
             }
             System.out.println("PILOT: deboarding complete \n");
         }catch(Exception e){
@@ -105,12 +123,17 @@ public class Plane implements interfacePlane {
     /**
      * Pilot flies to departure point
      */
-    public void flyToDeparturePoint()throws RemoteException{
+    public void flyToDeparturePoint(int id_to_set)throws RemoteException{
         lock.lock();
         int delay = gen.nextInt(10);
         try{
             System.out.println("PILOT: Flying back \n");
             plane_flying = true;
+            pilot_state = Pilot_State.FLYING_BACK;
+            synchronized (interfaceLog.class) {
+                log_int.setST_Pilot(pilot_state);
+                log_int.board_start("\nFlight " + id_to_set + ": returning.\n");
+            }
             flying.await(delay, TimeUnit.MILLISECONDS);
         }catch(Exception e){
             System.out.println("Interrupter Exception Error - " + e);
@@ -153,7 +176,7 @@ public class Plane implements interfacePlane {
             hostess.signal();
             System.out.printf("passenger %d boarding plane \n", person);
             synchronized (interfaceLog.class) {
-                i_log.setIN_F(plane);
+                log_int.setIN_F(plane);
             }
          }catch(Exception e){
             System.out.println("Interrupter Exception Error - " + e);
@@ -165,11 +188,16 @@ public class Plane implements interfacePlane {
     /**
      * Passenger is in flight, wait for its end
      */
-    public void waitForEndOfFlight()throws RemoteException{
+    public void waitForEndOfFlight(int id_passenger)throws RemoteException{
         lock.lock();
         try{
             while(plane_flying){
                flying.await(); 
+            }
+            passenger_state = Passenger_State.IN_FLIGHT;
+            synchronized (interfaceLog.class) {
+                log_int.setST_Passenger(id_passenger, passenger_state);
+                log_int.log_write("Passenger " + id_passenger + " is in flight");
             }
         }catch(Exception e){
             System.out.println("Interrupter Exception Error - " + e);
@@ -190,7 +218,7 @@ public class Plane implements interfacePlane {
             System.out.printf("Passenger %d leaving the plane \n", person);
             //Logger_stub.getInstance().pass_in_flight(plane);
             synchronized (interfaceLog.class) {
-                i_log.setIN_F(plane);
+                log_int.setIN_F(plane);
             }
         }catch(Exception e){
             System.out.println("Interrupter Exception Error - " + e);

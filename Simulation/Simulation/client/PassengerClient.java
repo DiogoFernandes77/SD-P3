@@ -17,7 +17,6 @@ public class PassengerClient {
         interfaceDepAirp dep_int = null;
         interfacePlane plane_int = null;
         interfaceDestAirp dest_int = null;
-        interfaceLog log_int = null;
 
         /* get location of the generic registry service */
         String rmiRegHostName = Parameters.REGISTRY_HOSTNAME;
@@ -36,18 +35,7 @@ public class PassengerClient {
         }
 
         /* Look for the other entities in the registry */
-        //logger
-        try{
-            log_int = (interfaceLog) registry.lookup(Parameters.LOGGER_NAME_ENTRY);
-        }catch (NotBoundException ex) {
-            System.out.println("Racing Track is not registered: " + ex.getMessage());
-            ex.printStackTrace();
-            System.exit(1);
-        } catch (RemoteException ex) {
-            System.out.println("Exception thrown while locating Racing Track: " + ex.getMessage());
-            ex.printStackTrace();
-            System.exit(1);
-        }
+
 
         //depart airport
         try {
@@ -89,7 +77,7 @@ public class PassengerClient {
         }
 
 
-        Passenger passenger = new Passenger(Integer.parseInt(args[0]), dep_int, plane_int, dest_int, log_int);
+        Passenger passenger = new Passenger(Integer.parseInt(args[0]), dep_int, plane_int, dest_int);
         System.out.println("Starting Passenger " + args[0] + " Thread");
         passenger.start();
         try {

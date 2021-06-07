@@ -5,10 +5,11 @@ import java.rmi.*;
 public interface interfaceDepAirp extends Remote{
 
     //pilot
-    void informPlaneReadyForBoarding()throws RemoteException ;
+    void informPlaneReadyForBoarding(int id_to_set)throws RemoteException ;
     void waitForAllInBoarding()throws RemoteException ;
     void parkAtTransferGate()throws RemoteException ;
-    
+    void summary() throws RemoteException;
+
     //hostess
     void prepareForPassBoarding()throws RemoteException ;
     void checkDocuments()throws RemoteException;

@@ -2,29 +2,83 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="671aa700-f05d-4a2e-abdf-c866efb35758" name="Default Changelist" comment="add logger, run as localhost">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SD-P3.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Simulation/Simulation/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Simulation/Simulation/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Simulation/Simulation/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Simulation/Simulation/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Simulation/Simulation/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Simulation/Simulation/Simulation.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Simulation/Simulation/interfaces/interfaceLog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Simulation/Simulation/server/LogPackage/Logger_.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Simulation/Simulation/server/LogPackage/Logger_Class.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Simulation/Simulation/server/LogPackage/Logger_Server.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Simulation/Simulation/server/LogPackage/java.policy" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Simulation/Simulation/server/LogPackage/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Simulation/server/DepartAirp/java.policy" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Simulation/server/DestinationAirp/java.policy" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Simulation/server/LogPackage/java.policy" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Simulation/server/Plane/java.policy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/Simulation/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/Simulation/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/Simulation/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/Simulation/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/Simulation/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/Simulation/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/Simulation/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/Simulation/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/Simulation/Parameters.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/Simulation/Parameters.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/Simulation/Simulation.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/Simulation/Simulation.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/Simulation/States/Hostess_State.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/Simulation/States/Hostess_State.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/Simulation/States/Passenger_State.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/Simulation/States/Passenger_State.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/Simulation/States/Pilot_State.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/Simulation/States/Pilot_State.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/Simulation/States/package-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/Simulation/States/package-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/Simulation/client/Hostess.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/Simulation/client/Hostess.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/Simulation/client/HostessClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/Simulation/client/HostessClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/Simulation/client/Passenger.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/Simulation/client/Passenger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/Simulation/client/PassengerClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/Simulation/client/PassengerClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/Simulation/client/Pilot.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/Simulation/client/Pilot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/Simulation/client/PilotClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/Simulation/client/PilotClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/Simulation/client/package-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/Simulation/client/package-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/Simulation/interfaces/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/Simulation/interfaces/Register.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/Simulation/interfaces/interfaceDepAirp.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/Simulation/interfaces/interfaceDepAirp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/Simulation/interfaces/interfaceDestAirp.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/Simulation/interfaces/interfaceDestAirp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/Simulation/interfaces/interfaceLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/Simulation/interfaces/interfaceLog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/Simulation/interfaces/interfacePlane.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/Simulation/interfaces/interfacePlane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/Simulation/java.policy" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/Simulation/java.policy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/Simulation/registry/RegisterRemoteObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/Simulation/registry/RegisterRemoteObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/Simulation/registry/ServerRegisterRemoteObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/Simulation/registry/ServerRegisterRemoteObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/Simulation/registry/java.policy" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/Simulation/registry/java.policy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/Simulation/registry/package-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/Simulation/registry/package-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/Simulation/server/DepartAirp/DepAirp_server.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/Simulation/server/DepartAirp/DepAirp_server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/Simulation/server/DepartAirp/DepartAirport.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/Simulation/server/DepartAirp/DepartAirport.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/Simulation/server/DepartAirp/package-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/Simulation/server/DepartAirp/package-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/Simulation/server/DestinationAirp/DestAirp_server.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/Simulation/server/DestinationAirp/DestAirp_server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/Simulation/server/DestinationAirp/DestAirport.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/Simulation/server/DestinationAirp/DestAirport.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/Simulation/server/DestinationAirp/package-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/Simulation/server/DestinationAirp/package-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/Simulation/server/LogPackage/Logger_.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/Simulation/server/LogPackage/Logger_.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/Simulation/server/LogPackage/Logger_Class.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/Simulation/server/LogPackage/Logger_Class.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/Simulation/server/LogPackage/Logger_Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/Simulation/server/LogPackage/Logger_Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/Simulation/server/LogPackage/java.policy" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/Simulation/server/LogPackage/java.policy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/Simulation/server/LogPackage/package-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/Simulation/server/LogPackage/package-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/Simulation/server/Plane/Plane.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/Simulation/server/Plane/Plane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/Simulation/server/Plane/Plane_server.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/Simulation/server/Plane/Plane_server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/Simulation/server/Plane/package-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/Simulation/server/Plane/package-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/States/Hostess_State.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/States/Hostess_State.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/States/Passenger_State.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/States/Passenger_State.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/States/Pilot_State.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/States/Pilot_State.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/States/package-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/States/package-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/client/Hostess.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/client/Hostess.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/client/HostessClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/client/HostessClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/client/Passenger.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/client/Passenger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/client/PassengerClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/client/PassengerClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/client/Pilot.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/client/Pilot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/client/PilotClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/client/PilotClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/client/package-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/client/package-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/interfaces/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/interfaces/Register.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/interfaces/interfaceDepAirp.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/interfaces/interfaceDepAirp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/interfaces/interfaceDestAirp.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/interfaces/interfaceDestAirp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/interfaces/interfaceLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/interfaces/interfaceLog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/interfaces/interfacePlane.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/interfaces/interfacePlane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/registry/RegisterRemoteObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/registry/RegisterRemoteObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/registry/ServerRegisterRemoteObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/registry/ServerRegisterRemoteObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/registry/package-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/registry/package-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/server/DepartAirp/DepAirp_server.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/server/DepartAirp/DepAirp_server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/server/DepartAirp/DepartAirport.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/server/DepartAirp/DepartAirport.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/server/DepartAirp/java.policy" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/server/DepartAirp/java.policy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/server/DepartAirp/package-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/server/DepartAirp/package-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/server/DestinationAirp/DestAirp_server.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/server/DestinationAirp/DestAirp_server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/server/DestinationAirp/DestAirport.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/server/DestinationAirp/DestAirport.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/server/DestinationAirp/java.policy" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/server/DestinationAirp/java.policy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/server/DestinationAirp/package-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/server/DestinationAirp/package-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/server/LogPackage/Logger_Class.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/server/LogPackage/Logger_Class.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/server/LogPackage/Logger_Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/server/LogPackage/Logger_Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/server/LogPackage/java.policy" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/server/LogPackage/java.policy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/server/LogPackage/package-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/server/LogPackage/package-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/server/Plane/Plane.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/server/Plane/Plane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/server/Plane/Plane_server.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/server/Plane/Plane_server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/server/Plane/java.policy" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/server/Plane/java.policy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/server/Plane/package-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/server/Plane/package-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,14 +97,21 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Simulation/server/LogPackage/Logger_Class.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Simulation/server/Plane/Plane_server.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Simulation/server/DepartAirp/DepartAirport.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Simulation/server/LogPackage/Logger_Server.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Simulation/Simulation/server/LogPackage/Logger_Class.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Simulation/server/Plane/Plane.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Simulation/buildAndDeploy.sh" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Simulation/clean.sh" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Simulation/server/DepartAirp/DepAirp_server.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Simulation/killProcess.sh" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Simulation/server/DestinationAirp/DestAirport.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Simulation/server/DestinationAirp/DestAirp_server.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Simulation/States/Hostess_State.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Simulation/interfaces/interfaceDepAirp.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Simulation/interfaces/Register.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Simulation/interfaces/interfaceLog.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Simulation/client/Pilot.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Simulation/Simulation/server/LogPackage/Logger_.txt" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Simulation/client/Hostess.java" root0="FORCE_HIGHLIGHTING" />
@@ -59,13 +120,6 @@
     <setting file="file://$PROJECT_DIR$/Simulation/interfaces/interfaceDestAirp.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Simulation/client/Passenger.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Simulation/client/PilotClient.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Simulation/server/Plane/Plane_server.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Simulation/server/DepartAirp/DepartAirport.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Simulation/server/Plane/Plane.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Simulation/server/DepartAirp/DepAirp_server.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Simulation/server/DestinationAirp/DestAirport.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Simulation/server/DestinationAirp/DestAirp_server.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Simulation/interfaces/interfaceLog.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IlluminatedCloudWorkspaceSettings">
     <option name="projectWorkspaceSettings">
@@ -132,7 +186,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622929634855</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="add logger, run as localhost">
+      <created>1622929958954</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1622929958954</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

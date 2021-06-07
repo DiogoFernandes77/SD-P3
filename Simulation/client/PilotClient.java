@@ -16,15 +16,12 @@ public class PilotClient {
     public static void main(String[] args) {
         interfaceDepAirp dep_int = null;
         interfacePlane plane_int = null;
-        interfaceLog log_int = null;
 
         /* get location of the generic registry service */
         String rmiRegHostName = Parameters.REGISTRY_HOSTNAME;
         int rmiRegPortNumb = Parameters.REGISTRY_PORT;
 
-
         /* look for the remote object by name in the remote host registry */
-
         Registry registry = null;
         try {
             registry = LocateRegistry.getRegistry(rmiRegHostName, rmiRegPortNumb);
@@ -33,20 +30,8 @@ public class PilotClient {
             e.printStackTrace();
             System.exit(1);
         }
-        /* Look for the other entities in the registry */
 
-        //logger
-        try{
-            log_int = (interfaceLog) registry.lookup(Parameters.LOGGER_NAME_ENTRY);
-        }catch (NotBoundException ex) {
-            System.out.println("Racing Track is not registered: " + ex.getMessage());
-            ex.printStackTrace();
-            System.exit(1);
-        } catch (RemoteException ex) {
-            System.out.println("Exception thrown while locating Racing Track: " + ex.getMessage());
-            ex.printStackTrace();
-            System.exit(1);
-        }
+        /* Look for the other entities in the registry */
 
         //depart airport
         try {
@@ -75,7 +60,7 @@ public class PilotClient {
         }
 
         System.out.println("Starting Pilot Thread");
-        Pilot pil = new Pilot(dep_int, plane_int, log_int);
+        Pilot pil = new Pilot(dep_int, plane_int);
         pil.start();
 
         try {

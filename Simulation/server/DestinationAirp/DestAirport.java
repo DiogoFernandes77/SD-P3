@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
+import Simulation.States.Passenger_State;
 import Simulation.interfaces.interfaceDestAirp;
 import Simulation.interfaces.interfaceLog;
 
@@ -22,6 +23,7 @@ public class DestAirport implements interfaceDestAirp {
     private static final DestAirport destArp_instance = null;
     private static ArrayList<Integer> passenger_arrived;
     private interfaceLog i_log = null;
+    private Passenger_State passenger_state;
 
     /**
      * Create new ArrayList and new ReentrantLock
@@ -43,9 +45,11 @@ public class DestAirport implements interfaceDestAirp {
         lock.lock();
         try {
             passenger_arrived.add(person);
-            //Logger_stub.getInstance().pass_leave_plane(passenger_arrived);
+            passenger_state = Passenger_State.AT_DESTINATION;
             synchronized (interfaceLog.class) {
                 i_log.setATL(passenger_arrived);
+                i_log.setST_Passenger(person, passenger_state);
+                i_log.log_write("Passenger " + person + " is at destination");
             }
         } catch (Exception e) {
             System.out.println("Interrupter Exception Error - " + e);

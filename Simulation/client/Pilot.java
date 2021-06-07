@@ -17,7 +17,6 @@ public class Pilot extends Thread{
     private Pilot_State pilot_state;
     private interfaceDepAirp dep_int = null;
     private interfacePlane plane_int = null;
-    private interfaceLog log_int = null;
 
     private int flight_passanger_number;
     public int id_to_set = 0;
@@ -28,18 +27,10 @@ public class Pilot extends Thread{
      * Constructor Pilot, faz set ao estado do pilot
      * Manda uma mensagem pelo o //Logger_stub que o estado mudou
      */
-    public Pilot(interfaceDepAirp dep_int , interfacePlane plane_int, interfaceLog log_int){
+    public Pilot(interfaceDepAirp dep_int , interfacePlane plane_int){
         pilot_state = Pilot_State.AT_TRANSFER_GATE;
         this.dep_int = dep_int;
         this.plane_int = plane_int;
-        this.log_int = log_int;
-        synchronized (interfaceLog.class){
-            try {
-                log_int.setST_Pilot(pilot_state);
-            } catch (RemoteException e) {
-                e.printStackTrace();
-            }
-        }
     }
 
     /**
@@ -60,7 +51,7 @@ public class Pilot extends Thread{
                 parkAtTransferGate();
             }while(stillPassenger());
             System.out.println("PILOT RUNS ENDED \n");
-            log_int.summary();
+            dep_int.summary();
         }catch(RemoteException e){
             System.out.print(e);
         }
@@ -82,13 +73,7 @@ public class Pilot extends Thread{
     private void informPlaneReadyForBoarding()throws RemoteException{
         pilot_state = Pilot_State.READY_FOR_BOARDING;
         System.out.println("Pilot " + pilot_state);
-        //maybe syncronized
-        synchronized (interfaceLog.class) {
-            log_int.setFN(id_to_set);
-            log_int.setST_Pilot(pilot_state);
-            log_int.board_start("\nFlight " + id_to_set + ": boarding started.\n");
-        }
-        dep_int.informPlaneReadyForBoarding();
+        dep_int.informPlaneReadyForBoarding(id_to_set);
     }
 
     /**
@@ -98,10 +83,6 @@ public class Pilot extends Thread{
      */
     private void waitForAllInBoarding()throws RemoteException{
         pilot_state = Pilot_State.WAIT_FOR_BOARDING;
-        synchronized (interfaceLog.class) {
-            log_int.setST_Pilot(pilot_state);
-            log_int.log_write("Pilot is waiting for boarding");
-        }
         dep_int.waitForAllInBoarding();
     }
 
@@ -112,10 +93,6 @@ public class Pilot extends Thread{
      */
     private void flyToDestinationPoint()throws RemoteException{
         pilot_state = Pilot_State.FLYING_FORWARD;
-        synchronized (interfaceLog.class){
-            log_int.setST_Pilot(pilot_state);
-            log_int.log_write("Pilot is flying forward");
-        }
         plane_int.flyToDestinationPoint();
     }
 
@@ -126,11 +103,7 @@ public class Pilot extends Thread{
      */
     private void announceArrival()throws RemoteException{
         pilot_state = Pilot_State.DEBOARDING;
-        synchronized (interfaceLog.class) {
-            log_int.setST_Pilot(pilot_state);
-            log_int.board_start("\nFlight " + id_to_set + ": arrived.\n");
-        }
-        plane_int.announceArrival();
+        plane_int.announceArrival(id_to_set);
     }
 
     /**
@@ -140,11 +113,7 @@ public class Pilot extends Thread{
      */
     private void flyToDeparturePoint()throws RemoteException{
         pilot_state = Pilot_State.FLYING_BACK;
-        synchronized (interfaceLog.class) {
-            log_int.setST_Pilot(pilot_state);
-            log_int.board_start("\nFlight " + id_to_set + ": returning.\n");
-        }
-        plane_int.flyToDeparturePoint();
+        plane_int.flyToDeparturePoint(id_to_set);
     }
 
     /**
@@ -154,10 +123,6 @@ public class Pilot extends Thread{
      */
     private void parkAtTransferGate()throws RemoteException{
         pilot_state = Pilot_State.AT_TRANSFER_GATE;
-        synchronized (interfaceLog.class) {
-            log_int.setST_Pilot(pilot_state);
-            log_int.log_write("Pilot is at transfer gate");
-        }
         dep_int.parkAtTransferGate();
     }
 

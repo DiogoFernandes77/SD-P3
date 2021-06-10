@@ -41,11 +41,11 @@ public class PassengerClient {
         try {
             dep_int = (interfaceDepAirp) registry.lookup(Parameters.DEPART_AIRPORT_NAME_ENTRY);
         } catch (NotBoundException ex) {
-            System.out.println("Racing Track is not registered: " + ex.getMessage());
+            System.out.println("DepartAirport is not registered: " + ex.getMessage());
             ex.printStackTrace();
             System.exit(1);
         } catch (RemoteException ex) {
-            System.out.println("Exception thrown while locating Racing Track: " + ex.getMessage());
+            System.out.println("Exception thrown while locating  DepartAirport: " + ex.getMessage());
             ex.printStackTrace();
             System.exit(1);
         }
@@ -54,11 +54,11 @@ public class PassengerClient {
         try {
             plane_int = (interfacePlane) registry.lookup(Parameters.PLANE_NAME_ENTRY);
         } catch (NotBoundException ex) {
-            System.out.println("Racing Track is not registered: " + ex.getMessage());
+            System.out.println("Plane is not registered: " + ex.getMessage());
             ex.printStackTrace();
             System.exit(1);
         } catch (RemoteException ex) {
-            System.out.println("Exception thrown while locating Racing Track: " + ex.getMessage());
+            System.out.println("Exception thrown while locating Plane: " + ex.getMessage());
             ex.printStackTrace();
             System.exit(1);
         }
@@ -67,11 +67,11 @@ public class PassengerClient {
         try {
             dest_int = (interfaceDestAirp) registry.lookup(Parameters.DESTINATION_AIRPORT_NAME_ENTRY);
         } catch (NotBoundException ex) {
-            System.out.println("Racing Track is not registered: " + ex.getMessage());
+            System.out.println("DestinationAirport  is not registered: " + ex.getMessage());
             ex.printStackTrace();
             System.exit(1);
         } catch (RemoteException ex) {
-            System.out.println("Exception thrown while locating Racing Track: " + ex.getMessage());
+            System.out.println("Exception thrown while locating DestinatioAirport: " + ex.getMessage());
             ex.printStackTrace();
             System.exit(1);
         }

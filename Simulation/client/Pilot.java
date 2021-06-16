@@ -8,7 +8,6 @@ import Simulation.interfaces.*;
 import java.rmi.RemoteException;
 
 import Simulation.States.Pilot_State;
-import Simulation.server.LogPackage.Logger_Class;
 
 /**
  * Class Pilot
@@ -25,7 +24,6 @@ public class Pilot extends Thread{
     }
     /**
      * Constructor Pilot, faz set ao estado do pilot
-     * Manda uma mensagem pelo o //Logger_stub que o estado mudou
      */
     public Pilot(interfaceDepAirp dep_int , interfacePlane plane_int){
         pilot_state = Pilot_State.AT_TRANSFER_GATE;
@@ -35,7 +33,6 @@ public class Pilot extends Thread{
 
     /**
      * Implementação do médodo run() que estabiliza o operar da thread
-     * @return SHUT to //Logger_stub if work done
      * */    @Override
     public void run(){
         try{
@@ -51,9 +48,12 @@ public class Pilot extends Thread{
                 parkAtTransferGate();
             }while(stillPassenger());
             System.out.println("PILOT RUNS ENDED \n");
+            sleep(1);
             dep_int.summary();
         }catch(RemoteException e){
             System.out.print(e);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 
@@ -67,8 +67,6 @@ public class Pilot extends Thread{
 
     /**
      * Piloto informa que o aviao já se encontra pronto para o embarque
-     * Manda uma mensagem pelo o //Logger_stub para informar que o voo x teve inicio e escreve a informação no ficheiro
-     * Manda uma mensagem pelo o dep_int para informar que o aviao esta pronto para o embarque
      */
     private void informPlaneReadyForBoarding()throws RemoteException{
         pilot_state = Pilot_State.READY_FOR_BOARDING;
@@ -77,9 +75,7 @@ public class Pilot extends Thread{
     }
 
     /**
-     * Piloto aguarda que todos os passeigeiros entrem no aviao
-     * Manda uma mensagem pelo o //Logger_stub para informar que o estado mudou e escreve no ficheiro
-     * Manda uma mensagem pelo o dep_int para informar que o piloto esta a espera que os passageiros embarquem
+     * Piloto aguarda que todos os passageiros entrem no aviao
      */
     private void waitForAllInBoarding()throws RemoteException{
         pilot_state = Pilot_State.WAIT_FOR_BOARDING;
@@ -88,8 +84,6 @@ public class Pilot extends Thread{
 
     /**
      * Piloto vai para o aeroporto de destino
-     * Manda uma mensagem pelo o //Logger_stub para informar que o estado mudou e escreve no ficheiro
-     * Manda uma mensagem pelo o plane_int para informar que o piloto voou para o destino
      */
     private void flyToDestinationPoint()throws RemoteException{
         pilot_state = Pilot_State.FLYING_FORWARD;
@@ -98,8 +92,6 @@ public class Pilot extends Thread{
 
     /**
      * Piloto informa que chegou ao destino
-     * Manda uma mensagem pelo o //Logger_stub para informar que o estado mudou e escreve no ficheiro que o voo x chegou
-     * Manda uma mensagem pelo o plane_int para informar que o piloto voou para o destino
      */
     private void announceArrival()throws RemoteException{
         pilot_state = Pilot_State.DEBOARDING;
@@ -108,8 +100,6 @@ public class Pilot extends Thread{
 
     /**
      * Piloto volta que chegou ao departure
-     * Manda uma mensagem pelo o //Logger_stub para informar que o estado mudou e escreve no ficheiro que o voo x voltou
-     * Manda uma mensagem pelo o plane_int para informar que o piloto voou para o departure
      */
     private void flyToDeparturePoint()throws RemoteException{
         pilot_state = Pilot_State.FLYING_BACK;
@@ -117,9 +107,7 @@ public class Pilot extends Thread{
     }
 
     /**
-     * Piloto estacion no transfer gate
-     * Manda uma mensagem pelo o //Logger_stub para informar que o estado mudou e escreve no ficheiro que o voo x voltou
-     * Manda uma mensagem pelo o plane_int para informar que o piloto estacionou no transfer gate
+     * Piloto estaciona no transfer gate
      */
     private void parkAtTransferGate()throws RemoteException{
         pilot_state = Pilot_State.AT_TRANSFER_GATE;

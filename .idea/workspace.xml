@@ -2,7 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="671aa700-f05d-4a2e-abdf-c866efb35758" name="Default Changelist" comment="add logger, run as localhost">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SD-P3.iml" beforeDir="false" afterPath="$PROJECT_DIR$/SD-P3.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/Parameters_Local.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/Parameters_Local.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/Simulation/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/Simulation/.idea/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Simulation/Simulation/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/Simulation/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Simulation/Simulation/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/Simulation/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Simulation/Simulation/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/Simulation/.idea/vcs.xml" afterDir="false" />
@@ -36,7 +44,6 @@
       <change beforePath="$PROJECT_DIR$/Simulation/Simulation/server/DestinationAirp/DestAirp_server.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/Simulation/server/DestinationAirp/DestAirp_server.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Simulation/Simulation/server/DestinationAirp/DestAirport.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/Simulation/server/DestinationAirp/DestAirport.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Simulation/Simulation/server/DestinationAirp/package-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/Simulation/server/DestinationAirp/package-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Simulation/Simulation/server/LogPackage/Logger_.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/Simulation/server/LogPackage/Logger_.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Simulation/Simulation/server/LogPackage/Logger_Class.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/Simulation/server/LogPackage/Logger_Class.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Simulation/Simulation/server/LogPackage/Logger_Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/Simulation/server/LogPackage/Logger_Server.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Simulation/Simulation/server/LogPackage/java.policy" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/Simulation/server/LogPackage/java.policy" afterDir="false" />
@@ -63,6 +70,9 @@
       <change beforePath="$PROJECT_DIR$/Simulation/registry/RegisterRemoteObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/registry/RegisterRemoteObject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Simulation/registry/ServerRegisterRemoteObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/registry/ServerRegisterRemoteObject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Simulation/registry/package-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/registry/package-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/runClientLocal.sh" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/runClientLocal.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/runRemote.sh" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/runRemote.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulation/runServersLocal.sh" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/runServersLocal.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Simulation/server/DepartAirp/DepAirp_server.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/server/DepartAirp/DepAirp_server.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Simulation/server/DepartAirp/DepartAirport.java" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/server/DepartAirp/DepartAirport.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Simulation/server/DepartAirp/java.policy" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/server/DepartAirp/java.policy" afterDir="false" />
@@ -96,30 +106,31 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Simulation/server/LogPackage/Logger_Class.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Simulation/server/Plane/Plane_server.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Simulation/server/DepartAirp/DepartAirport.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Simulation/server/LogPackage/Logger_Server.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Simulation/Simulation/server/LogPackage/Logger_Class.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Simulation/server/Plane/Plane.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Simulation/buildAndDeploy.sh" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Simulation/clean.sh" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Simulation/server/DepartAirp/DepAirp_server.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Simulation/killProcess.sh" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Simulation/server/DestinationAirp/DestAirport.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Simulation/server/DestinationAirp/DestAirp_server.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Simulation/States/Hostess_State.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Simulation/interfaces/interfaceDepAirp.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Simulation/interfaces/Register.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Simulation/interfaces/interfaceLog.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Simulation/client/Pilot.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Simulation/Simulation/server/LogPackage/Logger_.txt" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Simulation/client/Hostess.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Simulation/client/HostessClient.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Simulation/interfaces/interfacePlane.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Simulation/interfaces/interfaceDestAirp.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Simulation/registry/ServerRegisterRemoteObject.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Simulation/client/Passenger.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Simulation/client/PilotClient.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Simulation/States/Hostess_State.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Simulation/client/Hostess.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Simulation/clean.sh" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Simulation/killProcess.sh" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Simulation/buildAndDeploy.sh" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Simulation/Simulation/server/LogPackage/Logger_Class.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Simulation/interfaces/interfaceLog.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Simulation/interfaces/interfacePlane.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Simulation/interfaces/interfaceDepAirp.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Simulation/interfaces/interfaceDestAirp.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Simulation/interfaces/Register.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Simulation/server/LogPackage/Logger_Class.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Simulation/server/LogPackage/Logger_Server.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Simulation/server/Plane/Plane.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Simulation/server/Plane/Plane_server.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Simulation/server/DepartAirp/DepartAirport.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Simulation/server/DepartAirp/DepAirp_server.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Simulation/server/DestinationAirp/DestAirport.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Desktop/src/Client.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Simulation/server/DestinationAirp/DestAirp_server.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IlluminatedCloudWorkspaceSettings">
     <option name="projectWorkspaceSettings">
@@ -147,10 +158,23 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/IdeaProjects/SD-P1" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/SleepingBarbersRMIType2StatMon" />
     <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
   </component>
   <component name="RunManager">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Logger_Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Simulation.server.LogPackage.Logger_Server" />
       <module name="SD-P3" />
@@ -178,6 +202,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1622889551628</updated>
+      <workItem from="1623522409166" duration="562000" />
+      <workItem from="1623526604844" duration="2648000" />
     </task>
     <task id="LOCAL-00001" summary="add logger, run as localhost">
       <created>1622929634855</created>
@@ -195,6 +221,9 @@
     </task>
     <option name="localTasksCounter" value="3" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">

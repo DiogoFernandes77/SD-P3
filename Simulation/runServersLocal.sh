@@ -23,7 +23,7 @@ rmiregistry -J-Djava.rmi.server.useCodebaseOnly=false 22358 &
 
 echo -e "\n A executar Registry"
 
-java -Djava.rmi.server.codebase="file:///home/tabuas/Desktop/uni/4ano/SD/Project/SD-P3/SD-P3"\
+java -Djava.rmi.server.codebase="file:///home/tony/2_Semester/SD/SD-P3"\
      -Djava.rmi.server.useCodebaseOnly=false\
      -Djava.security.policy=java.policy\
      Simulation.registry.ServerRegisterRemoteObject &
@@ -32,7 +32,7 @@ sleep 1
 
 echo -e "\n A executar Logger"
 
-java -Djava.rmi.server.codebase="file:///home/tabuas/Desktop/uni/4ano/SD/Project/SD-P3/SD-P3"\
+java -Djava.rmi.server.codebase="file:///home/tony/2_Semester/SD/SD-P3"\
      -Djava.rmi.server.useCodebaseOnly=false\
      -Djava.security.policy=java.policy\
      Simulation.server.LogPackage.Logger_Server &
@@ -41,7 +41,7 @@ sleep 1
 
 echo -e "\n A executar DepAirp"
 
-java -Djava.rmi.server.codebase="file:///home/tabuas/Desktop/uni/4ano/SD/Project/SD-P3/SD-P3"\
+java -Djava.rmi.server.codebase="file:///home/tony/2_Semester/SD/SD-P3"\
      -Djava.rmi.server.useCodebaseOnly=false\
      -Djava.security.policy=java.policy\
      Simulation.server.DepartAirp.DepAirp_server &
@@ -50,7 +50,7 @@ sleep 1
 
 echo -e "\n A executar Plane"
 
-java -Djava.rmi.server.codebase="file:///home/tabuas/Desktop/uni/4ano/SD/Project/SD-P3/SD-P3"\
+java -Djava.rmi.server.codebase="file:///home/tony/2_Semester/SD/SD-P3"\
      -Djava.rmi.server.useCodebaseOnly=false\
      -Djava.security.policy=java.policy\
      Simulation.server.Plane.Plane_server &
@@ -59,7 +59,7 @@ sleep 1
 
 echo -e "\n A executar DestAirp"
 
-java -Djava.rmi.server.codebase="file:///home/tabuas/Desktop/uni/4ano/SD/Project/SD-P3/SD-P3"\
+java -Djava.rmi.server.codebase="file:///home/tony/2_Semester/SD/SD-P3"\
      -Djava.rmi.server.useCodebaseOnly=false\
      -Djava.security.policy=java.policy\
      Simulation.server.DestinationAirp.DestAirp_server &

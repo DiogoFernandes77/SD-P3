@@ -30,7 +30,6 @@ public class Plane implements interfacePlane {
     private Pilot_State pilot_state;
     private Passenger_State passenger_state;
 
-
     private interfaceLog log_int = null;
     private ArrayList<Integer> plane;
     private Condition flying;
@@ -216,7 +215,6 @@ public class Plane implements interfacePlane {
             plane.remove(Integer.valueOf(person));
             cd_deboarding.signal();
             System.out.printf("Passenger %d leaving the plane \n", person);
-            //Logger_stub.getInstance().pass_in_flight(plane);
             synchronized (interfaceLog.class) {
                 log_int.setIN_F(plane);
             }

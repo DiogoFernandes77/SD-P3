@@ -198,8 +198,7 @@ public class Logger_Class implements interfaceLog{
       * Summary of flights
      */
     public void summary() throws RemoteException{
-        lock.lock();
-        try{
+
             try {
                 fileWriter = new FileWriter(file_name, true);
                 fileWriter.write("\nAirlift sum up:\n");
@@ -210,12 +209,7 @@ public class Logger_Class implements interfaceLog{
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }catch(Exception e){
-            System.out.println("Interrupter Exception Error - " + e);
-            e.printStackTrace();
-        }finally{
-            lock.unlock();
-        }
+
     }
 
     /**

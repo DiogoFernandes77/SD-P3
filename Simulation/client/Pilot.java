@@ -35,7 +35,7 @@ public class Pilot extends Thread{
      * Implementação do médodo run() que estabiliza o operar da thread
      * */    @Override
     public void run(){
-        try{
+         try{
             do{
                 setFlightID();
                 informPlaneReadyForBoarding();
@@ -48,7 +48,7 @@ public class Pilot extends Thread{
                 parkAtTransferGate();
             }while(stillPassenger());
             System.out.println("PILOT RUNS ENDED \n");
-            sleep(1);
+            sleep(1000);
             dep_int.summary();
         }catch(RemoteException e){
             System.out.print(e);

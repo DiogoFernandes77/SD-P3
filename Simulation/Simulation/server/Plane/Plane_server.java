@@ -10,7 +10,6 @@ import java.rmi.server.UnicastRemoteObject;
 
 import Simulation.Parameters;
 import Simulation.interfaces.*;
-import Simulation.server.LogPackage.*;
 
 /**
  * Plane server
@@ -105,6 +104,4 @@ public class Plane_server {
         }
         System.out.printf("Plane object was registered!");
     }
-
-
 }

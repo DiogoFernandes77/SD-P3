@@ -12,8 +12,6 @@ import Simulation.States.Passenger_State;
 import Simulation.interfaces.interfaceDepAirp;
 import Simulation.interfaces.interfaceDestAirp;
 import Simulation.interfaces.interfacePlane;
-import Simulation.interfaces.interfaceLog;
-import Simulation.server.LogPackage.Logger_Class;
 
 /**
  * Passenger client thread
@@ -30,7 +28,6 @@ public class Passenger extends Thread{
 
     /**
      * Constructor Passageiro, faz set ao estado do passageiro com o certo id
-     * Manda uma mensagem pelo o //Logger_stub que o estado mudou de um certo id
      * @param id
      */
     public Passenger(int id, interfaceDepAirp dep_int, interfacePlane plane_int, interfaceDestAirp dest_int){
@@ -44,7 +41,6 @@ public class Passenger extends Thread{
 
     /**
      * Implementação do médodo run() que estabiliza o operar da thread
-     * @return SHUT to //Logger_stub if work done
      * */
     @Override
     public void run(){
@@ -78,8 +74,6 @@ public class Passenger extends Thread{
 
     /**
      * Passageiro entra na queue
-     * Manda uma mensagem pelo o //Logger_stub que o estado mudou de um certo id, e escreve no ficheiro
-     * Manda uma mensagem pelo o dep_int para meter o passageiro de id em estado de entrada
      */
     private void enterQueue()throws RemoteException{
         passenger_state = Passenger_State.IN_QUEUE;
@@ -88,8 +82,6 @@ public class Passenger extends Thread{
 
     /**
      * Passageiro espera na queue até ser chamado pela hospedeira para mostrar os documentos
-     * Manda uma mensagem pelo o //Logger_stub que o estado mudou de um certo id, e escreve no ficheiro
-     * Manda uma mensagem pelo o dep_int para meter o passageiro de id em estado de espera
      */
     private void waitInQueue() throws RemoteException{
         passenger_state = Passenger_State.IN_QUEUE;
@@ -98,20 +90,16 @@ public class Passenger extends Thread{
 
     /**
      * Passageiro mostra documentos
-     * Manda uma mensagem pelo o dep_int para meter o passageiro de id mostrou os documentos
      */
     private void showDocuments()throws RemoteException{ dep_int.showDocuments(id_passenger); }
 
     /**
      * Passageiro entra no avião
-     * Manda uma mensagem pelo o plane_int para meter o passageiro de id entrou no avião
      */
     private void boardThePlane()throws RemoteException{ plane_int.boardThePlane(id_passenger); }
 
     /**
      * Passageiro espera que o voo che ao fim
-     * Manda uma mensagem pelo o //Logger_stub que o estado mudou de um certo id, e escreve no ficheiro
-     * Manda uma mensagem pelo o plane_int para meter o passageiro de id está em voo
      */
     private void waitForEndOfFlight()throws RemoteException{
         passenger_state = Passenger_State.IN_FLIGHT;
@@ -119,15 +107,11 @@ public class Passenger extends Thread{
     }
     /**
      * Passageiro sai do aviao
-     * Manda uma mensagem pelo o plane_int a informar que o passageiro de id saiu do aviao
      */
     private void leaveThePlane()throws RemoteException{ plane_int.leaveThePlane(id_passenger); }
 
     /**
      * Passageiro sai do aeroporto e acaba a sua tarefa
-     * Manda uma mensagem pelo o //Logger_stub que o estado mudou de um certo id, e escreve no ficheiro
-     * A informar que o passageiro já está no destino
-     * Manda uma mensagem pelo o dest_int para adiconar o passageiro id num array que vai obter os passageiros que já sairam
      */
     private void death()throws RemoteException{
         passenger_state = Passenger_State.AT_DESTINATION;

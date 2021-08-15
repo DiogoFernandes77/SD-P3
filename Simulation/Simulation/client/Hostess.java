@@ -34,7 +34,6 @@ public class Hostess extends Thread {
 
     /**
      * Implementação do médodo run() que estabiliza o operar da thread
-     * @return SHUT to logger_stub if work done
      * */
     @Override
     public void run() {
@@ -67,8 +66,6 @@ public class Hostess extends Thread {
 
     /**
      * Hospedeira vai ficar à espera que um avião chegue ao aeroporto
-     * Manda uma mensagem pelo o Logger_stub a informar que o estado mudou e escreve no ficheiro
-     * Manda uma mensagem pelo o Ddep_int a informar que está a espera de um avião
      * */
     private void waitForNextFlight() throws RemoteException{
         hostess_state = Hostess_State.WAIT_FOR_NEXT_FLIGHT;
@@ -77,8 +74,6 @@ public class Hostess extends Thread {
 
     /**
      * Hospedeira vai esperar que cheguem passageiros ao aeroporto
-     * Manda uma mensagem pelo o Logger_stub a informar que o estado mudou e escreve no ficheiro
-     * Manda uma mensagem pelo o Ddep_int a informar que está a preparar-se para o voo
      * * */
     private void prepareForPassBoarding() throws RemoteException{
         hostess_state = Hostess_State.WAIT_FOR_PASSENGER;
@@ -87,8 +82,6 @@ public class Hostess extends Thread {
 
     /**
      * Hospedeira vai esperar que cheguem mais passageiros ao aeroporto, para atingir a capacidade do avião
-     * Manda uma mensagem pelo o Logger_stub a informar que o estado mudou e escreve no ficheiro
-     * Manda uma mensagem pelo o Ddep_int a informar que está à espera pelo proximo passageiro
      * * */
     private void waitForNextPassenger()throws RemoteException {
         hostess_state = Hostess_State.WAIT_FOR_PASSENGER;
@@ -97,8 +90,6 @@ public class Hostess extends Thread {
 
     /**
      * Hospedeira vai verificar os documentos dos passageiros que estao na fila
-     * Manda uma mensagem pelo o Logger_stub a informar que o estado mudou e escreve no ficheiro
-     * Manda uma mensagem pelo o Ddep_int a informar que está a checkar os documentos
      * */
     private void checkDocuments() throws RemoteException{
         hostess_state = Hostess_State.CHECK_PASSENGER;

@@ -1,9 +1,11 @@
 /**
- *  Log Class to produce log file each initiation
- *  @author António Ramos e Diogo Fernandes
+ * Log Class to produce log file each initiation
+ *
+ * @author António Ramos e Diogo Fernandes
  */
 
 package Simulation.server.LogPackage;
+
 import Simulation.interfaces.interfaceLog;
 import Simulation.States.*;
 
@@ -15,7 +17,7 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 //Class responsible to write on file the state of program
-public class Logger_Class implements interfaceLog{
+public class Logger_Class implements interfaceLog {
     //implements singleton for repository information about what happens in the simulation, gives output file
 
     private static String file_name; // name file
@@ -39,24 +41,25 @@ public class Logger_Class implements interfaceLog{
     private static FileWriter fileWriter; // Write on file
 
     //pilot variables abbreviate
-    public String[] Pilot_state = new String[] {"ATRG", "RDFB","WTFB", "FLFW", "DRPP", "FLBK"};
+    public String[] Pilot_state = new String[]{"ATRG", "RDFB", "WTFB", "FLFW", "DRPP", "FLBK"};
 
     //hostess variables abbreviate
-    public String[] Hostess_state = new String[] {"WTFL", "WTPS", "CKPS", "RDTF"};
+    public String[] Hostess_state = new String[]{"WTFL", "WTPS", "CKPS", "RDTF"};
 
     //passenger variables abbreviate
     public String[] Passenger_state = new String[]{"GTAP", "INQE", "INFL", "ATDS"};
 
     private final Lock lock;
+
     /**
      * Constructor of Logger
      * @param nPassenger
      */
-     public Logger_Class(int nPassenger) throws RemoteException {
+    public Logger_Class(int nPassenger) throws RemoteException {
         this.nPassenger = nPassenger;
         ST_Passenger = new Passenger_State[nPassenger];
 
-        ST_Pilot =  Pilot_State.AT_TRANSFER_GATE;
+        ST_Pilot = Pilot_State.AT_TRANSFER_GATE;
         ST_Hostess = Hostess_State.WAIT_FOR_NEXT_FLIGHT;
 
         Q = new ArrayList<Integer>();
@@ -68,27 +71,26 @@ public class Logger_Class implements interfaceLog{
     }
 
 
-
     /**
      * Creation of a empty file
      * @return file_name
      */
-    public String createFile() throws RemoteException{
-       file_name = directory_file + default_name + extension_file; //output file
-       File dir = new File(file_name);
-       try {
-           fileWriter = new FileWriter(file_name);
-           fileWriter.close();
-       } catch (IOException e) {
-           e.printStackTrace();
-       }
+    public String createFile() throws RemoteException {
+        file_name = directory_file + default_name + extension_file; //output file
+        File dir = new File(file_name);
+        try {
+            fileWriter = new FileWriter(file_name);
+            fileWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return file_name;
     }
 
     /**
      * Start writing head of file
      */
-    public void init() throws RemoteException{
+    public void init() throws RemoteException {
         String file_name = createFile(); //creation of file
         add_struct(file_name, nPassenger);   //header file
     }
@@ -98,7 +100,7 @@ public class Logger_Class implements interfaceLog{
      * @param file_n -- String
      * @param n_passenger -- int
      */
-    public void add_struct(String file_n, int n_passenger) throws RemoteException{
+    public void add_struct(String file_n, int n_passenger) throws RemoteException {
         try {
             fileWriter = new FileWriter(file_n);
             fileWriter.write("PT \t HT  ");
@@ -109,8 +111,8 @@ public class Logger_Class implements interfaceLog{
                     fileWriter.write(" P" + i + " ");
             }
             fileWriter.write("\tInQ InF PTAL\n");
-            fileWriter.write( Pilot_state[ST_Pilot.ordinal()]+ " " + Hostess_state[ST_Hostess.ordinal()] + " ");
-            for(int i = 0; i < n_passenger; i ++){
+            fileWriter.write(Pilot_state[ST_Pilot.ordinal()] + " " + Hostess_state[ST_Hostess.ordinal()] + " ");
+            for (int i = 0; i < n_passenger; i++) {
                 fileWriter.write(Passenger_state[0] + " ");
             }
             fileWriter.write("\t0\t0\t0\n");
@@ -123,7 +125,7 @@ public class Logger_Class implements interfaceLog{
     /** Used for writing Flight x: boarding started, returnig, arrived
      * x is the number of the flight
      */
-    public void board_start(String text) throws RemoteException{
+    public void board_start(String text) throws RemoteException {
         lock.lock();
         try {
             try {
@@ -135,10 +137,10 @@ public class Logger_Class implements interfaceLog{
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println("Interrupter Exception Error - " + e);
             e.printStackTrace();
-        }finally{
+        } finally {
             lock.unlock();
         }
 
@@ -149,7 +151,7 @@ public class Logger_Class implements interfaceLog{
      * add struct Flight x: passenger y checked.
      * @param text -- String
      */
-    public void pass_check(String text) throws RemoteException{
+    public void pass_check(String text) throws RemoteException {
         lock.lock();
         try {
             try {
@@ -160,12 +162,12 @@ public class Logger_Class implements interfaceLog{
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }catch(Exception e){
-                System.out.println("Interrupter Exception Error - " + e);
-                e.printStackTrace();
-            }finally{
-                lock.unlock();
-            }
+        } catch (Exception e) {
+            System.out.println("Interrupter Exception Error - " + e);
+            e.printStackTrace();
+        } finally {
+            lock.unlock();
+        }
     }
 
     /**
@@ -173,9 +175,9 @@ public class Logger_Class implements interfaceLog{
      * Add output on array, for using in final simulation, for writing a summary
      * @param capacity -int
      */
-    public void departed(int capacity) throws RemoteException{
+    public void departed(int capacity) throws RemoteException {
         lock.lock();
-        try{
+        try {
             try {
                 fileWriter = new FileWriter(file_name, true);
                 fileWriter.write("\nFlight " + FN + " departed with " + capacity + " passengers.\n");
@@ -185,74 +187,70 @@ public class Logger_Class implements interfaceLog{
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println("Interrupter Exception Error - " + e);
             e.printStackTrace();
-        }finally{
+        } finally {
             lock.unlock();
         }
 
     }
 
     /**
-      * Summary of flights
+     * Summary of flights
      */
-    public void summary() throws RemoteException{
-
-            try {
-                fileWriter = new FileWriter(file_name, true);
-                fileWriter.write("\nAirlift sum up:\n");
-                for (String s : Summary)
-                    fileWriter.write(s + "\n");
-                fileWriter.flush();
-                fileWriter.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
+    public void summary() throws RemoteException {
+        try {
+            fileWriter = new FileWriter(file_name, true);
+            fileWriter.write("\nAirlift sum up:\n");
+            for (String s : Summary)
+                fileWriter.write(s + "\n");
+            fileWriter.flush();
+            fileWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
      * Write main events on file
      * @param type - string
      */
-    public void log_write(String type) throws RemoteException{
+    public void log_write(String type) throws RemoteException {
         lock.lock();
         try {
             try {
                 System.out.println(type);
-
                 fileWriter = new FileWriter(file_name, true);
                 StringBuilder struct_string = new StringBuilder();
                 struct_string.append(Pilot_state[ST_Pilot.ordinal()]).append(" ");
                 struct_string.append(Hostess_state[ST_Hostess.ordinal()]).append(" ");
-                for (int i = 0; i < nPassenger; i ++){
-                    try{
+                for (int i = 0; i < nPassenger; i++) {
+                    try {
                         struct_string.append(Passenger_state[ST_Passenger[i].ordinal()]).append(" ");
-                    }catch(NullPointerException e){
+                    } catch (NullPointerException e) {
                         struct_string.append("GTAP ");
                     }
                 }
-                try{
+                try {
                     struct_string.append("\t").append(Q.size()).append("\t").append(IN_F.size()).append("\t").append(ATL.size()).append("\n");
-                }catch(NullPointerException e){
+                } catch (NullPointerException e) {
                     //struct_string.append("");
                 }
                 fileWriter.write(struct_string.toString());
                 fileWriter.flush();
                 fileWriter.close();
 
-            } catch (IOException e){
+            } catch (IOException e) {
                 System.out.print(e);
                 e.printStackTrace();
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println("Interrupter Exception Error - " + e);
             e.printStackTrace();
-        }finally{
+        } finally {
             lock.unlock();
         }
-
     }
 
     // -------------------------- SETTERS ------------------------- //
@@ -264,6 +262,7 @@ public class Logger_Class implements interfaceLog{
     public void setFN(int FN) throws RemoteException {
         this.FN = FN;
     }
+
     /**
      * Set PASSENGER STATE OF ID
      * @param id
@@ -272,6 +271,7 @@ public class Logger_Class implements interfaceLog{
     public void setST_Passenger(int id, Passenger_State ST_Passenger) throws RemoteException {
         this.ST_Passenger[id] = ST_Passenger;
     }
+
     /**
      * Set pilot STATE
      * @param ST_Pilot
@@ -279,24 +279,36 @@ public class Logger_Class implements interfaceLog{
     public void setST_Pilot(Pilot_State ST_Pilot) throws RemoteException {
         this.ST_Pilot = ST_Pilot;
     }
+
     /**
      * Set pilot STATE
      * @param st
      */
-    public void setST_Hostess(Hostess_State st) throws RemoteException { this.ST_Hostess = st; }
+    public void setST_Hostess(Hostess_State st) throws RemoteException {
+        this.ST_Hostess = st;
+    }
+
     /**
      * Set ArrayList in queue
      * @param q
      */
-    public void setQ(Queue<Integer> q) throws RemoteException { Q =  new ArrayList<>(q); }
+    public void setQ(Queue<Integer> q) throws RemoteException {
+        Q = new ArrayList<>(q);
+    }
+
     /**
      * Set ArrayList in flight
      * @param IN_F
      */
-    public void setIN_F(ArrayList<Integer> IN_F) throws RemoteException { this.IN_F = IN_F; }
+    public void setIN_F(ArrayList<Integer> IN_F) throws RemoteException {
+        this.IN_F = IN_F;
+    }
+
     /**
      * Set ArrayList at destination
      * @param ATL
      */
-    public void setATL(ArrayList<Integer> ATL) throws RemoteException { this.ATL = ATL; }
+    public void setATL(ArrayList<Integer> ATL) throws RemoteException {
+        this.ATL = ATL;
+    }
 }

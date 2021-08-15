@@ -15,12 +15,12 @@ rm -f Simulation.zip
 zip -rq Simulation.zip Simulation
 
 echo "Uploading files to machines"
-echo "Machine 1"
-sshpass -p diogo-antonio ssh sd306@l040101-ws01.ua.pt 'mkdir -p test/SDP3'
-sshpass -p diogo-antonio ssh sd306@l040101-ws01.ua.pt 'rm -rf test/SDP3/*'
-sshpass -p diogo-antonio scp Simulation.zip sd306@l040101-ws01.ua.pt:test/SDP3
-sshpass -p diogo-antonio scp java.policy sd306@l040101-ws01.ua.pt:test/SDP3
-sshpass -p diogo-antonio ssh sd306@l040101-ws01.ua.pt 'cd test/SDP3 ; unzip -uq Simulation.zip; javac $(find . -name "*.java") '
+#echo "Machine 1"
+#sshpass -p diogo-antonio ssh sd306@l040101-ws01.ua.pt 'mkdir -p test/SDP3'
+#sshpass -p diogo-antonio ssh sd306@l040101-ws01.ua.pt 'rm -rf test/SDP3/*'
+#sshpass -p diogo-antonio scp Simulation.zip sd306@l040101-ws01.ua.pt:test/SDP3
+#sshpass -p diogo-antonio scp java.policy sd306@l040101-ws01.ua.pt:test/SDP3
+#sshpass -p diogo-antonio ssh sd306@l040101-ws01.ua.pt 'cd test/SDP3 ; unzip -uq Simulation.zip; javac $(find . -name "*.java") '
 echo "Machine 2"
 sshpass -p diogo-antonio ssh sd306@l040101-ws02.ua.pt 'mkdir -p test/SDP3'
 sshpass -p diogo-antonio ssh sd306@l040101-ws02.ua.pt 'rm -rf test/SDP3/*'

@@ -2,7 +2,7 @@ package Simulation;
 
 public class Parameters {
     
-    public final static String DEPART_AIRPORT_HOSTNAME = "l040101-ws01.ua.pt";
+    public final static String DEPART_AIRPORT_HOSTNAME = "l040101-ws08.ua.pt";
 
     public final static int DEPART_AIRPORT_PORT = 22350;
 

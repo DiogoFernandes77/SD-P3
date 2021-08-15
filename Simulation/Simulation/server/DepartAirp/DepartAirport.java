@@ -1,10 +1,9 @@
 /**
- *  Log Class to produce log file each initiation
+ *  DepartAirport Class to simulate initialization of flights
  *  @author António Ramos e Diogo Fernandes
  */
 
 package Simulation.server.DepartAirp;
-
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -206,7 +205,6 @@ public class DepartAirport implements interfaceDepAirp{
             waitingPassenger.signal();
             current_capacity++;
             passenger_left--;
-
         }catch(Exception e){
             System.out.println("Interrupter Exception Error - " + e);
             e.printStackTrace();
@@ -297,7 +295,6 @@ public class DepartAirport implements interfaceDepAirp{
         try{
             System.out.printf("passenger %d enters queue \n", person);
             queue.add(person);
-          //coment and try
             passenger_state = Passenger_State.IN_QUEUE;
             synchronized (interfaceLog.class) {
                 log_int.setST_Passenger(person, passenger_state);
@@ -330,7 +327,6 @@ public class DepartAirport implements interfaceDepAirp{
             while(!(rdyCheck && (queue.peek() == person))){// each thread see if hostess is ready and if is their turn
                 waitingCheck.await();
             }
-
         }catch(Exception e){
             System.out.println("Interrupter Exception Error - " + e);
             e.printStackTrace();
